@@ -1,0 +1,36 @@
+form{
+    display: flex;
+    flex-direction: column;
+    width:fit-content;
+    height:fit-content;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+}
+div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+.buttons{
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 10vh;
+}
+.buttons > button {
+    background-color: aliceblue;
+    border: 5px solid transparent;
+    border-radius: 2px;
+    transition: background-color 0.3s ease-in, transform 0.3s ease-in;
+}
+
+.buttons > button:hover {
+    background-color: rgb(209, 234, 255);
+    transform: scale(1.05) translateZ(0);
+    will-change: transform;
+}
+
