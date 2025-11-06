@@ -1,5 +1,5 @@
 export interface interfazPeliculas {
-  _id: string; // MongoDB genera este campo automáticamente
+  _id?: string; // MongoDB genera este campo automáticamente
   title: string;
   premiere?: string;
   director?: string;

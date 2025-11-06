@@ -2,6 +2,7 @@ import { interfazPeliculas } from '../../interfaces/interfazPeliculas';
 import { GestionarPeliculas } from '../../services/gestionar-peliculas';
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-peliculas',
   imports: [],
@@ -16,5 +17,18 @@ export class Peliculas {
   }
   ngOnInit(){
     this.getPeliculas();
+  }
+
+  crearNuevaPelicula() {
+    const nueva: interfazPeliculas = {
+      title: 'Matrix',
+      director: 'Wachowski',
+      duration: 136
+    };
+
+    this.GestionarPeliculas.crearPelicula(nueva).subscribe({
+      next: (respuesta) => console.log('Película creada:', respuesta),
+      error: (err) => console.error('Error al crear película:', err)
+    });  
   }
 }
