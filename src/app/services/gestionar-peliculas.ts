@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class GestionarPeliculas {
-  private serviceUrl='/lista-peliculas.json';
+  private serviceUrl='http://localhost:3000/peliculas';
 
-  constructor(private http: HttpClient){ }
+  constructor(private http: HttpClient){}
 
   getPeliculas(): Observable<interfazPeliculas[]>{
     return this.http.get<interfazPeliculas[]>(this.serviceUrl);
