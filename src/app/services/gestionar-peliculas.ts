@@ -1,4 +1,3 @@
-import { Peliculas } from './../componentes/peliculas/peliculas';
 import { interfazPeliculas } from '../interfaces/interfazPeliculas';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';

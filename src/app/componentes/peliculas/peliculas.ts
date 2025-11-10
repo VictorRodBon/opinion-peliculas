@@ -2,7 +2,6 @@ import { interfazPeliculas } from '../../interfaces/interfazPeliculas';
 import { GestionarPeliculas } from '../../services/gestionar-peliculas';
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-peliculas',
   imports: [],
@@ -29,6 +28,6 @@ export class Peliculas {
     this.GestionarPeliculas.crearPelicula(nueva).subscribe({
       next: (respuesta) => console.log('Película creada:', respuesta),
       error: (err) => console.error('Error al crear película:', err)
-    });  
+    });
   }
 }
