@@ -1,0 +1,9 @@
+<div class="stars">
+    @for (i of getStars(); track i) {
+    <span class="star" [class.filled]="i < getFilledStars()" [class.half]="hasHalfStar(i)">
+        ★
+    </span>
+    }
+
+</div>
+<p>{{ rating/2 }} / {{ maxStars }}</p>

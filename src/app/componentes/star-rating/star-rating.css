@@ -1,0 +1,16 @@
+.star {
+    color: lightgray;
+    position: relative;
+}
+
+.star.filled {
+    color: gold;
+}
+
+.star.half::before {
+    content: '★';
+    color: gold;
+    position: absolute;
+    width: 37%;
+    overflow: hidden;
+}

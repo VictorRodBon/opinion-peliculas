@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { interfazOpinion } from '../../interfaces/opinion';
 import { GestionarOpiniones } from '../../services/gestionar-opiniones';
+import { StarRating } from '../star-rating/star-rating';
 
 @Component({
     selector: 'app-opiniones',
-    imports: [],
+    imports: [StarRating],
     templateUrl: './opiniones.html',
     styleUrls: ['./opiniones.css'],
 })

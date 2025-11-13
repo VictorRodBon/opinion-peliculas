@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class GestionarPeliculas {
-  private serviceUrl='http://localhost:3000/Peliculas';
+  private serviceUrl ='http://192.168.0.35:3000/Peliculas';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
