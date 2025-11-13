@@ -1,59 +1,62 @@
-# OpinionesPeliculas
+# 🎬 Gestión de Opiniones de Películas – Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+Este proyecto permite a los usuarios visualizar, crear y gestionar opiniones sobre películas. Cada opinión incluye una puntuación, una descripción y referencias al usuario y la película correspondiente. Está desarrollado con Angular en el frontend y Node.js + MongoDB en el backend.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Características principales
 
-```bash
-ng serve
-```
+- Visualización de usuarios y sus valoraciones
+- Creación de opiniones con puntuación y comentario
+- Listado de películas favoritas por usuario
+- Integración con backend Express y MongoDB
+- Interfaz modular con componentes reutilizables
+- Validación de formularios y control de errores
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🧰 Tecnologías utilizadas
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+| Tecnología     | Rol                           |
+|----------------|-------------------------------|
+| Angular        | Frontend SPA                  |
+| TypeScript     | Tipado estático y modularidad |
+| Node.js        | Backend y servidor API        |
+| Express        | Framework de rutas REST       |
+| MongoDB        | Base de datos NoSQL           |
+| Mongoose       | ODM para MongoDB              |
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📦 Instalación
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Backend
 
 ```bash
-ng test
+cd backend
+npm install
+node app.js
 ```
 
-## Running end-to-end tests
+## APARTADOS
 
-For end-to-end (e2e) testing, run:
+### Programación
+[X] Dashboard peliculas
+[X] Dashboard opiniones
 
-```bash
-ng e2e
-```
+[ ] Login
+[ ] Registro
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+[X] Conexión con base de datos MongoDB y Express
 
-## Additional Resources
+[ ] Crear nueva película
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+### Diseño
+[ ] Dashboard peliculas
+[ ] Dashboard opiniones
+
+[X] Login
+[ ] Registro
+
+[X] Crear nueva película

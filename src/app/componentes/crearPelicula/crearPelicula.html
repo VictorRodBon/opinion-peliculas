@@ -1,0 +1,44 @@
+<form>
+    <div>
+        <label for="title">Título:</label>
+        <input id="title" type="text" />
+    </div>
+
+    <div>
+        <label for="premiere">Fecha de estreno:</label>
+        <input id="premiere" type="date"/>
+    </div>
+
+    <div>
+        <label for="director">Director:</label>
+        <input id="director" type="text" />
+    </div>
+
+    <div>
+        <label for="short_description">Descripción corta:</label>
+        <textarea id="short_description" placeholder="descripción corta"></textarea>
+    </div>
+
+    <div>
+        <label for="long_description">Descripción larga:</label>
+        <textarea id="long_description" placeholder="descripción larga"></textarea>
+    </div>
+
+    <div>
+        <label for="image">URL de imagen:</label>
+        <input id="image" type="file" accept="image/*" />
+    </div>
+
+    <div>
+        <label for="duration">Duración (minutos):</label>
+        <input id="duration" type="number"/>
+    </div>
+
+    <div>
+        <label for="main_actors">Actores principales (separados por ":"):</label>
+        <textarea id="main_actors" formControlName="main_actorsRaw"
+            placeholder="Ejemplo: Brad Pitt:Angelina Jolie:Tom Cruise"></textarea>
+    </div>
+
+    <button type="submit">Guardar película</button>
+</form>

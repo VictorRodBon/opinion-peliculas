@@ -1,10 +1,9 @@
 opiniones
 <ul>
-    <!--@for (opinion of listaOpiniones) {
+    @for (opinion of listaOpiniones; track opinion._id) {
     <li>
-        <strong>{{ opinion.pelicula.title }}</strong> — {{ opinion.puntuacion }}/10
-        <p>{{ opinion.descripcion }}</p>
+        <strong>{{ opinion.usuario?.nombre }}</strong> |<strong>{{ opinion.pelicula?.title }}</strong> | {{ opinion.puntuacion }}/10
+        <ul><li>{{ opinion.descripcion }}</li></ul>
     </li>
     }
-    <li>hola</li>-->
 </ul>

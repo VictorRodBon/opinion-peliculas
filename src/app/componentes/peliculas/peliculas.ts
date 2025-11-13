@@ -1,10 +1,13 @@
 import { interfazPeliculas } from '../../interfaces/interfazPeliculas';
 import { GestionarPeliculas } from '../../services/gestionar-peliculas';
 import { Component } from '@angular/core';
+import { RouterLinkWithHref } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-peliculas',
-  imports: [],
+  imports: [RouterLinkWithHref],
   templateUrl: './peliculas.html',
   styleUrl: './peliculas.css',
 })
@@ -18,16 +21,5 @@ export class Peliculas {
     this.getPeliculas();
   }
 
-  crearNuevaPelicula() {
-    const nueva: interfazPeliculas = {
-      title: 'Matrix',
-      director: 'Wachowski',
-      duration: 136
-    };
-
-    this.GestionarPeliculas.crearPelicula(nueva).subscribe({
-      next: (respuesta) => console.log('Película creada:', respuesta),
-      error: (err) => console.error('Error al crear película:', err)
-    });
-  }
+  
 }

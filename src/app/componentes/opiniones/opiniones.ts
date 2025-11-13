@@ -3,26 +3,19 @@ import { interfazOpinion } from '../../interfaces/opinion';
 import { GestionarOpiniones } from '../../services/gestionar-opiniones';
 
 @Component({
-  selector: 'app-opiniones',
-  imports: [],
-  templateUrl: './opiniones.html',
-  styleUrls: ['./opiniones.css'],
+    selector: 'app-opiniones',
+    imports: [],
+    templateUrl: './opiniones.html',
+    styleUrls: ['./opiniones.css'],
 })
 export class Opiniones implements OnInit {
-  listaOpiniones: interfazOpinion[]=[];
+    listaOpiniones: interfazOpinion[] = [];
+    constructor(private GestionarOpiniones: GestionarOpiniones) { }
+    getOpiniones(): void {
+        this.GestionarOpiniones.getOpiniones().subscribe((datos) => this.listaOpiniones = datos)
+    }
 
-  constructor(private gestionarOpiniones: GestionarOpiniones) { }
-
-  getOpiniones(): void {
-    const idUsuario = '69122f2d800bec2859f23d9d'; // ← ejemplo
-    this.gestionarOpiniones.getOpiniones(idUsuario).subscribe((datos) => {
-      console.log('Opiniones recibidas:', datos);
-      this.listaOpiniones = datos;
-    });
-  }
-
-
-  ngOnInit(): void {
-    this.getOpiniones();
-  }
+    ngOnInit(): void {
+        this.getOpiniones();
+    }
 }

@@ -1,24 +1,23 @@
 import { interfazOpinion } from '../interfaces/opinion';
+import { interfazPeliculas } from '../interfaces/interfazPeliculas';
+import { interfazUsuarios } from '../interfaces/users';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { interfazUsuarios } from '../interfaces/users';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GestionarOpiniones {
-  private serviceUrl = 'http://localhost:3000/usuarios';
+  private serviceUrl = 'http://localhost:3000/Opiniones';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient) { }
 
-  getOpiniones(idUsuario: string): Observable<interfazOpinion[]> {
-    return this.http.get<interfazUsuarios>(`${this.serviceUrl}/${idUsuario}`).pipe(
-      map(usuario => usuario.valoraciones)
-    );
+  getOpiniones(): Observable<interfazOpinion[]> {
+    return this.http.get<interfazOpinion[]>(`${this.serviceUrl}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
