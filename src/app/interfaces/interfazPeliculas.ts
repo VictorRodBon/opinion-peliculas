@@ -9,3 +9,4 @@ export interface interfazPeliculas {
   duration?: number;
   main_actors?: string[];
 }
+
