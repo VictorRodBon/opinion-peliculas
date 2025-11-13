@@ -37,9 +37,9 @@ cd backend
 npm install
 node app.js
 ```
-
+---
 ## APARTADOS
-
+--
 ### Programación
 [X] Dashboard peliculas
 [X] Dashboard opiniones
@@ -51,7 +51,7 @@ node app.js
 
 [ ] Crear nueva película
 
-
+---
 ### Diseño
 [ ] Dashboard peliculas
 [ ] Dashboard opiniones
