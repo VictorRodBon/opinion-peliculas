@@ -39,7 +39,7 @@ node app.js
 ```
 ---
 ## APARTADOS
---
+
 ### Programación
 [X] Dashboard peliculas
 [X] Dashboard opiniones
