@@ -9,9 +9,11 @@ Este proyecto permite a los usuarios visualizar, crear y gestionar opiniones sob
 - Visualización de usuarios y sus valoraciones
 - Creación de opiniones con puntuación y comentario
 - Listado de películas favoritas por usuario
-- Integración con backend Express y MongoDB
+- [Integración con backend Express y MongoDB](https://github.com/VictorRodBon/basedatos-mongo)
 - Interfaz modular con componentes reutilizables
 - Validación de formularios y control de errores
+
+
 
 ---
 
