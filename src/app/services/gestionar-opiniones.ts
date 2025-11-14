@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class GestionarOpiniones {
-  private serviceUrl = 'http://192.168.0.35:3000/Opiniones';
+  private serviceUrl = 'http://localhost:3000/Opiniones';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
