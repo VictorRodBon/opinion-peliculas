@@ -2,11 +2,11 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { Menu } from './componentes/menu/menu';
 import { CommonModule } from '@angular/common';
-import { StarRating } from './componentes/star-rating/star-rating';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Menu, CommonModule, StarRating],
+  imports: [RouterOutlet, Menu, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

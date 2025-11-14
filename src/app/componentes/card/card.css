@@ -1,0 +1,48 @@
+.opinion-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.opinion-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+mat-card-header {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+}
+
+mat-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+mat-card-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+mat-card-content {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #444;
+}
+
+mat-card-footer {
+    margin-top: 1rem;
+    margin-right: 1rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: right;
+}
+ngb-rating {
+    font-size: 1.4rem;
+    color: #f5c518;
+    /* estilo dorado tipo IMDb */
+    margin-top: 0.5rem;
+}

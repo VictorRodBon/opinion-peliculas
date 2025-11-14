@@ -1,0 +1,15 @@
+<mat-card class="opinion-card">
+    <mat-card-header>
+        <mat-card-title>{{ opinion.pelicula.title }}</mat-card-title>
+        <mat-card-subtitle>{{ opinion.usuario.nombre }} | {{ opinion.puntuacion }}/10</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>{{ opinion.descripcion }}</p>
+        <ngbd-rating-config [rate]="opinion.puntuacion"></ngbd-rating-config>
+    </mat-card-content>
+    
+    <mat-card-footer>
+        <p>Registrado : {{ opinion.fechaRegistro }}</p>
+    </mat-card-footer>
+</mat-card>

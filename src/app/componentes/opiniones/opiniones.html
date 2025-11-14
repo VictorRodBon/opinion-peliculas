@@ -1,13 +1,5 @@
-opiniones
-<ul>
+<div class="opiniones-grid">
     @for (opinion of listaOpiniones; track opinion._id) {
-    <li>
-        <strong>{{ opinion.usuario.nombre }}</strong> |<strong>{{ opinion.pelicula.title }}</strong> | {{ opinion.puntuacion }}/10
-
-        <app-star-rating [rating]="(opinion.puntuacion)" [maxStars]="5"></app-star-rating>
-
-        <ul><li>{{ opinion.descripcion }}</li>
-        </ul>
-    </li>
+        <app-card [opinion]="opinion"></app-card>
     }
-</ul>
+</div>

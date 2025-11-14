@@ -7,5 +7,5 @@ export interface interfazOpinion {
     puntuacion: number;
     descripcion?:string;
     pelicula: interfazPeliculas; // ID de la película
-    fecha:String;
+    fechaRegistro: string;
 }
