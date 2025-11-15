@@ -52,13 +52,19 @@ node app.js
 [X] Conexión con base de datos MongoDB y Express
 
 [ ] Crear nueva película
+[ ] Modificar Pelicula
+
+[ ] Añadir opinion pelicula
 
 ---
 ### Diseño
 [ ] Dashboard peliculas
-[ ] Dashboard opiniones
+[X] Dashboard opiniones
 
 [X] Login
 [ ] Registro
 
 [X] Crear nueva película
+[ ] Modificar Pelicula
+
+[ ] Añadir opinion pelicula -> si es posible, utilizar Events and readonly ratings 

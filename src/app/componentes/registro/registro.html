@@ -1,1 +1,51 @@
-<p>registro works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label>Nombre de usuario</label>
+        <input formControlName="username" />
+
+        @if (f['username'].touched && f['username'].invalid) {
+        <div class="error">
+            @if (f['username'].errors?.['required']) {
+            <div>El nombre es obligatorio.</div>
+            }
+            @if (f['username'].errors?.['minlength']) {
+            <div>Debe tener al menos 3 caracteres.</div>
+            }
+        </div>
+        }
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input formControlName="email" />
+
+        @if (f['email'].touched && f['email'].invalid) {
+        <div class="error">
+            @if (f['email'].errors?.['required']) {
+            <div>El email es obligatorio.</div>
+            }
+            @if (f['email'].errors?.['email']) {
+            <div>Formato de email inválido.</div>
+            }
+        </div>
+        }
+    </div>
+
+    <div>
+        <label>Contraseña</label>
+        <input type="password" formControlName="password" />
+
+        @if (f['password'].touched && f['password'].invalid) {
+        <div class="error">
+            @if (f['password'].errors?.['required']) {
+            <div>La contraseña es obligatoria.</div>
+            }
+            @if (f['password'].errors?.['minlength']) {
+            <div>Debe tener al menos 6 caracteres.</div>
+            }
+        </div>
+        }
+    </div>
+
+    <button type="submit">Registrarse</button>
+</form>
