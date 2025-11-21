@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GestionarUsuarios {
-  private serviceUrl='/public/users.json';
+  private serviceUrl ='http://localhost:3000/Peliculas';
 
   constructor(private http: HttpClient){ }
 

@@ -12,5 +12,5 @@ export const routes: Routes = [
     { path: 'opiniones', component: Opiniones },
     { path: 'crearPelicula', component: CrearPelicula },
     { path: '', redirectTo: '/login', pathMatch: 'full'}
-
+    
 ];
