@@ -31,7 +31,21 @@ export class Opiniones implements OnInit {
 
 
     ngOnInit(): void {
-        
         this.getOpiniones();
     }
+    // duardar una opinion
+    guardarOpinion():void{
+        
+    }
+
+    // modificar una opinion
+    modificarOpinion():void{
+
+    }
+
+    // elimnar una opinion
+    eliminarOpinion():void{
+
+    }
+
 }
