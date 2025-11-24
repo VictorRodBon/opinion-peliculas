@@ -12,11 +12,12 @@ export class GestionarUsuario {
 
   private apiURL =  'http://localhost:3000/usuarios';
 
-  // Señal privada para el usuario autenticado (o null si nadie)
-  private _usuarioActual = signal<String | null>(null);
-  usuarioActual = this._usuarioActual.asReadonly();
+  private _token = signal<string | null>(localStorage.getItem('token'));
+  token = this._token.asReadonly();
+
   // Computed para saber si está autenticado
-  estaAutenticado = computed(() => this.usuarioActual() !== null);
+  estaAutenticado = computed(() => this._token() !== null);
+
 
 
   registro(codigo: string, clave: string, nombre: string, email: string) {
@@ -37,9 +38,11 @@ export class GestionarUsuario {
       { correo, clave }
     ).pipe(
       tap(response => {
-        // Suponemos que la cookie ya fue enviada por el servidor
-        // Aquí actualizamos la señal del usuario
-        this._usuarioActual.set(response.message);
+        // Guardar el token en localStorage
+        localStorage.setItem('token', response.token);
+
+        // Actualizar la señal del usuario (puedes guardar el email o id)
+        //this._usuarioActual.set(response.usuario);
       }),
         catchError(err => {
           console.error("Error en login:", err);
@@ -49,18 +52,17 @@ export class GestionarUsuario {
   }
 
   logout() {
-    return this.http.post<void>(
-      this.apiURL + "/logout",
-      {}
-    ).pipe(
-      tap(() => {
-        this._usuarioActual.set(null);
-      }),
-        catchError(err => {
-          console.error("Error en logout:", err);
-          return throwError(() => err); // O devuelves un observable controlado
+    return this.http.post<void>(this.apiURL + "/logout", {}, this.getAuthHeaders())
+      .pipe(
+        tap(() => {
+          localStorage.removeItem('token');
+          this._token.set(null); // ✅ actualiza el signal
         })
-    );
+      );
   }
 
+  private getAuthHeaders() {
+    const token = this._token();
+    return { headers: { Authorization: `Bearer ${token}` } };
+  }
 }

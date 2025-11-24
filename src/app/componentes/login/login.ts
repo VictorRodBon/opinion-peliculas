@@ -18,10 +18,10 @@ export class Login {
   correo = '';
 
   onSubmit() {
-    this.auth.login(this.clave, this.correo).subscribe({
+    this.auth.login(this.correo, this.clave).subscribe({
       next: () => {
         this.error = "";
-        this.router.navigateByUrl('/opinionPeliculas');
+        this.router.navigateByUrl('/peliculas');
       },
       error: (err) => {
         console.error('Login fallido', err);
