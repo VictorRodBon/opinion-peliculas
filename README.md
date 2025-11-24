@@ -68,3 +68,9 @@ node app.js
 [ ] Modificar Pelicula
 
 [ ] Añadir opinion pelicula -> si es posible, utilizar Events and readonly ratings 
+
+
+
+
+## COSAS QUE CAMBIAR
+- Modificar ficheros para poder utilizar tocken

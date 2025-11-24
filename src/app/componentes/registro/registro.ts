@@ -1,34 +1,55 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { GestionarUsuario } from '../../services/gestionar-usuarios';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-registro',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  selector: 'Registro',
+  imports: [ReactiveFormsModule],
   templateUrl: './registro.html',
-  styleUrl: './registro.css',
+  styleUrl: './registro.css'
 })
 export class Registro {
-  registerForm!: FormGroup;
+  private gestionarUsuarios=inject(GestionarUsuario);
+  private router=inject(Router);
 
+  registroForm: FormGroup;
   constructor(private fb: FormBuilder) {
-    this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+    this.registroForm = this.fb.group({
+      codigo: ['', [Validators.required, Validators.minLength(5)]],
+      clave: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*]).{8,}$')
+        ]
+      ],
+      nombre: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
-
   onSubmit() {
-    if (this.registerForm.valid) {
-      console.log('Formulario enviado:', this.registerForm.value);
+    if (this.registroForm.valid) {
+      console.log('Formulario enviado:', this.registroForm.value);
+      this.gestionarUsuarios.registro(this.registroForm.get('codigo')?.value,
+                                      this.registroForm.get('clave')?.value,
+                                      this.registroForm.get('nombre')?.value,
+                                      this.registroForm.get('email')?.value)
+          .subscribe({
+        next: () => {
+          alert('Registro completado con éxito');
+          this.router.navigateByUrl('/opiniones');
+        },
+        error: (err) => {
+          console.error('Login fallido', err);
+        }
+      });
     } else {
-      this.registerForm.markAllAsTouched();
+      this.registroForm.markAllAsTouched();
     }
   }
 
   get f() {
-    return this.registerForm.controls;
+    return this.registroForm.controls;
   }
 }

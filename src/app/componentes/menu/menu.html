@@ -1,8 +1,15 @@
 <nav class="main-menu">
   <ul>
-    <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-    <li><a routerLink="/registro" routerLinkActive="active">Registro</a></li>
+    @if(!this.estaAutenticado()){
+      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="/registro" routerLinkActive="active">Registro</a></li>
+    }
+    @if(this.estaAutenticado()){
+      <li><a (click)="logout()">Logout</a></li>
+    }
     <li><a routerLink="/peliculas" routerLinkActive="active">Películas</a></li>
     <li><a routerLink="/opiniones" routerLinkActive="active">Opiniones</a></li>
+    <li><a routerLink="/crearPelicula" routerLinkActive="active">Crear pelicula</a></li>
+    <li><a routerLink="/crearOpinion" routerLinkActive="active">Crear opinion</a></li>
   </ul>
 </nav>
