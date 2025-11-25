@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkWithHref } from '@angular/router';
 import { GestionarUsuario } from '../../services/gestionar-usuarios';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-menu',
-  imports: [RouterLink],
+  imports: [RouterLink, MatMenuModule, MatButtonModule],
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })

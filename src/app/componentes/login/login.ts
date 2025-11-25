@@ -15,10 +15,10 @@ export class Login {
   private router = inject(Router);
   error: string="";
   clave = '';
-  correo = '';
+  email = '';
 
   onSubmit() {
-    this.auth.login(this.correo, this.clave).subscribe({
+    this.auth.login(this.email, this.clave).subscribe({
       next: () => {
         this.error = "";
         this.router.navigateByUrl('/peliculas');

@@ -20,7 +20,7 @@ export class GestionarUsuario {
 
 
 
-  registro(codigo: string, clave: string, nombre: string, email: string) {
+  registro(codigo: string, nombre: string, email: string, clave: string) {
     return this.http.post<Boolean>(
       this.apiURL + "/registro",
       { codigo,clave,nombre,email}
@@ -32,17 +32,26 @@ export class GestionarUsuario {
     );
   }
 
-  login(correo: string, clave: string) {
+  modificarUsuario(usuario: { codigo: string; nombre: string; email: string; clave?: string }) {
+    return this.http.put<Boolean>(
+      this.apiURL + "/modificar/" + usuario.codigo,
+      usuario
+    );
+  }
+
+  login(email: string, clave: string) {
     return this.http.post<RespuestaAuth>(
       this.apiURL + "/login",
-      { correo, clave }
+      { email, clave }
     ).pipe(
       tap(response => {
         // Guardar el token en localStorage
         localStorage.setItem('token', response.token);
+        localStorage.setItem('usuarioId', response.usuario._id);
+
 
         // Actualizar la señal del usuario (puedes guardar el email o id)
-        //this._usuarioActual.set(response.usuario);
+        this._token.set(response.token);
       }),
         catchError(err => {
           console.error("Error en login:", err);

@@ -9,15 +9,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class GestionarOpiniones {
-  private serviceUrl = 'http://localhost:3000/Opiniones';
+  
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  private apiURL = 'http://localhost:3000/opiniones';
 
   constructor(private http: HttpClient) { }
 
   getOpiniones(): Observable<interfazOpinion[]> {
-    return this.http.get<interfazOpinion[]>(`${this.serviceUrl}`);
+    return this.http.get<interfazOpinion[]>(`${this.apiURL}`);
+  }
+  crearOpinion(opinion: any) {
+    return this.http.post(this.apiURL, opinion);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -28,10 +32,4 @@ export class GestionarOpiniones {
     };
   }
 
-  crearOpinion(opinion: interfazOpinion): Observable<interfazOpinion> {
-    return this.http.post<interfazOpinion>(this.serviceUrl, opinion, this.httpOptions).pipe(
-      tap((opinion: interfazOpinion) => console.log(`Héroe añadido w/ id=${opinion.pelicula}`)),
-      catchError(this.handleError<interfazOpinion>('addHeroe'))
-    );
-  }
 }

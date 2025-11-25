@@ -1,4 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+/* Botón de acción dentro de la tabla */
+.tabla-peliculas button.mat-raised-button {
+    font-weight: 500;
+    border-radius: 20px;
+    /* más redondeado */
+    padding: 8px 20px;
+    transition: all 0.25s ease;
+    margin: 6px 0;
+    letter-spacing: 0.5px;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Estilo primario: azul degradado */
+.tabla-peliculas button.mat-raised-button.mat-primary {
+    background: linear-gradient(135deg, #2196f3, #21cbf3);
+    color: #fff;
+    box-shadow: 0 3px 8px rgba(33, 150, 243, 0.4);
+}
+
+.tabla-peliculas button.mat-raised-button.mat-primary:hover {
+    background: linear-gradient(135deg, #1976d2, #00bcd4);
+    transform: translateY(-2px);
+}
+
+/* Estilo secundario: verde para acciones positivas */
+.tabla-peliculas button.mat-raised-button.mat-accent {
+    background: linear-gradient(135deg, #4caf50, #81c784);
+    color: #fff;
+    box-shadow: 0 3px 8px rgba(76, 175, 80, 0.4);
+}
+
+.tabla-peliculas button.mat-raised-button.mat-accent:hover {
+    background: linear-gradient(135deg, #388e3c, #66bb6a);
+    transform: translateY(-2px);
+}
+
+/* Estilo de advertencia: rojo para eliminar */
+.tabla-peliculas button.mat-raised-button.warn {
+    background: linear-gradient(135deg, #f44336, #e57373);
+    color: #fff;
+    box-shadow: 0 3px 8px rgba(244, 67, 54, 0.4);
+}
+
+.tabla-peliculas button.mat-raised-button.warn:hover {
+    background: linear-gradient(135deg, #d32f2f, #ef5350);
+    transform: translateY(-2px);
+}

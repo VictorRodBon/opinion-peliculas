@@ -1,44 +1,47 @@
-<form>
-    <div>
-        <label for="title">Título:</label>
-        <input id="title" type="text" />
-    </div>
+<h2>Crear Película</h2>
 
-    <div>
-        <label for="premiere">Fecha de estreno:</label>
-        <input id="premiere" type="date"/>
-    </div>
+<form [formGroup]="peliculaForm" (ngSubmit)="crear()">
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title" required>
+    </mat-form-field>
 
-    <div>
-        <label for="director">Director:</label>
-        <input id="director" type="text" />
-    </div>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Fecha de estreno</mat-label>
+        <input matInput formControlName="premiere" placeholder="YYYY-MM-DD">
+    </mat-form-field>
 
-    <div>
-        <label for="short_description">Descripción corta:</label>
-        <textarea id="short_description" placeholder="descripción corta"></textarea>
-    </div>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Director</mat-label>
+        <input matInput formControlName="director">
+    </mat-form-field>
 
-    <div>
-        <label for="long_description">Descripción larga:</label>
-        <textarea id="long_description" placeholder="descripción larga"></textarea>
-    </div>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripción corta</mat-label>
+        <textarea matInput formControlName="short_description"></textarea>
+    </mat-form-field>
 
-    <div>
-        <label for="image">URL de imagen:</label>
-        <input id="image" type="file" accept="image/*" />
-    </div>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripción larga</mat-label>
+        <textarea matInput formControlName="long_description"></textarea>
+    </mat-form-field>
 
-    <div>
-        <label for="duration">Duración (minutos):</label>
-        <input id="duration" type="number"/>
-    </div>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>URL de imagen</mat-label>
+        <input matInput formControlName="image">
+    </mat-form-field>
 
-    <div>
-        <label for="main_actors">Actores principales (separados por ":"):</label>
-        <textarea id="main_actors" formControlName="main_actorsRaw"
-            placeholder="Ejemplo: Brad Pitt:Angelina Jolie:Tom Cruise"></textarea>
-    </div>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Duración (minutos)</mat-label>
+        <input matInput type="number" formControlName="duration">
+    </mat-form-field>
 
-    <button type="submit">Guardar película</button>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Actores principales (separados por comas)</mat-label>
+        <input matInput formControlName="main_actors">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="peliculaForm.invalid">
+        Crear Película
+    </button>
 </form>

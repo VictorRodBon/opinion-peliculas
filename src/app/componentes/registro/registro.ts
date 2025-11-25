@@ -32,13 +32,13 @@ export class Registro {
     if (this.registroForm.valid) {
       console.log('Formulario enviado:', this.registroForm.value);
       this.gestionarUsuarios.registro(this.registroForm.get('codigo')?.value,
-                                      this.registroForm.get('clave')?.value,
                                       this.registroForm.get('nombre')?.value,
-                                      this.registroForm.get('email')?.value)
+                                      this.registroForm.get('email')?.value,
+                                      this.registroForm.get('clave')?.value)
           .subscribe({
         next: () => {
           alert('Registro completado con éxito');
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/registro');
         },
         error: (err) => {
           console.error('Login fallido', err);

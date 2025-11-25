@@ -7,15 +7,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class GestionarPeliculas {
-  private serviceUrl ='http://localhost:3000/Peliculas';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  private apiURL = 'http://localhost:3000/peliculas';
 
   constructor(private http: HttpClient){}
 
   getPeliculas(): Observable<interfazPeliculas[]>{
-    return this.http.get<interfazPeliculas[]>(this.serviceUrl);
+    return this.http.get<interfazPeliculas[]>(this.apiURL);
+  }
+
+  getPelicula(id: string): Observable<interfazPeliculas> {
+    return this.http.get<interfazPeliculas>(`${this.apiURL}/${id}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -26,10 +30,16 @@ export class GestionarPeliculas {
     };
   }
 
-  crearPelicula(pelicula: interfazPeliculas): Observable<interfazPeliculas> {
-    return this.http.post<interfazPeliculas>(this.serviceUrl, pelicula,this.httpOptions).pipe(
-      tap((pelicula: interfazPeliculas) => console.log(`Héroe añadido w/ id=${pelicula._id}`)),
-      catchError(this.handleError<interfazPeliculas>('addHeroe'))
-    );
+  crearPelicula(pelicula: any) {
+    return this.http.post(this.apiURL, pelicula);
   }
+
+  borrarPelicula(id: string): Observable<any> {
+    return this.http.delete(`${this.apiURL}/${id}`);
+  }
+
+  actualizarPelicula(id: string, pelicula: any) {
+    return this.http.put(`${this.apiURL}/${id}`, pelicula);
+  }
+
 }
