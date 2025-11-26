@@ -41,10 +41,15 @@
                 <button mat-raised-button color="primary" [routerLink]="['/editarPelicula', pelicula._id]">
                     Editar Película
                 </button>
-                <button mat-raised-button color="warn" (click)="eliminarPelicula(pelicula._id)">
-                    Eliminar Película
-                </button>
-
+                @if (estaAutenticado()) {
+                    <button mat-raised-button color="warn" (click)="eliminarPelicula(pelicula._id)">
+                        Eliminar Película
+                    </button>
+                }@else{
+                    <button mat-raised-button color="warn" [routerLink]="['/editarPelicula', pelicula._id]">
+                        Borrar Película
+                    </button>
+                }
             </td>
         </ng-container>
     

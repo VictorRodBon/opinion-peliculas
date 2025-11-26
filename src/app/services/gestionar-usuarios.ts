@@ -16,6 +16,8 @@ export class GestionarUsuario {
   token = this._token.asReadonly();
 
   // Computed para saber si está autenticado
+  
+  
   estaAutenticado = computed(() => this._token() !== null);
 
 

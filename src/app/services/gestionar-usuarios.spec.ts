@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GestionarUsuarios } from './gestionar-usuarios';
+import { GestionarUsuario } from './gestionar-usuarios';
 
 describe('GestionarUsuarios', () => {
-  let service: GestionarUsuarios;
+  let service: GestionarUsuario;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GestionarUsuarios);
+    service = TestBed.inject(GestionarUsuario);
   });
 
   it('should be created', () => {

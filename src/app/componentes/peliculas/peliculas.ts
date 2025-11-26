@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, inject } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, inject, computed, signal } from '@angular/core';
 import { RouterLinkWithHref } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule, SortDirection } from '@angular/material/sort';
@@ -29,6 +29,15 @@ import { Filtro } from '../filtro/filtro';
   ],
 })
 export class Peliculas implements AfterViewInit {
+  
+  private _token = signal<string | null>(localStorage.getItem('token'));
+  token = this._token.asReadonly();
+  // Computed para saber si está autenticado
+  
+  estaAutenticado = computed(() => this._token() !== null);
+  
+
+
   private gestionarPeliculas = inject(GestionarPeliculas);
   private snackBar = inject(MatSnackBar);
 
