@@ -6,7 +6,6 @@ import { Opiniones } from './componentes/opiniones/opiniones';
 import { CrearPelicula } from './componentes/crearPelicula/crearPelicula';
 import { authGuard } from './guard-auth';
 import { CrearOpinion } from './componentes/crear-opinion/crear-opinion';
-import { ModificarUsuario } from './componentes/modificar-usuario/modificar-usuario';
 import { EditarPeliculas } from './componentes/editar-pelicula/editar-pelicula';
 import { DetallePelicula } from './componentes/detalle-pelicula/detalle-pelicula';
 
@@ -16,7 +15,6 @@ export const routes: Routes = [
   { path: 'peliculas', component: Peliculas },
   { path: 'opiniones', component: Opiniones, canActivate: [authGuard]  },
   { path: 'detallePeliculas/:peliculaId', component: DetallePelicula, canActivate: [authGuard]  },
-  { path: 'modificarUsuario', component: ModificarUsuario, canActivate: [authGuard] },
   { path: 'editarPelicula/:peliculaId', component: EditarPeliculas, canActivate: [authGuard] },
   { path: 'crearPelicula', component: CrearPelicula, canActivate: [authGuard] },
   { path: 'crearOpinion/:peliculaId', component: CrearOpinion, canActivate: [authGuard] },

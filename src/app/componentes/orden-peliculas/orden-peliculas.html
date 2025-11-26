@@ -1,0 +1,14 @@
+<div class="sorter">
+    <label for="criterio">Ordenar por:</label>
+    <select [(ngModel)]="criterio" id="criterio">
+        <option value="fecha">Fecha</option>
+        <option value="puntuacion">Puntuación</option>
+    </select>
+</div>
+
+<!-- Mostrar las opiniones ya ordenadas -->
+<div class="opiniones-grid">
+    @for (opinion of opinionesOrdenadas; track opinion._id) {
+        <app-card class="opinion-card" [opinion]="opinion"></app-card>
+    }
+</div>

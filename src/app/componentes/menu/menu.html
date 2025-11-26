@@ -17,8 +17,6 @@
       <button mat-button [matMenuTriggerFor]="userMenu">Usuario</button>
       <!-- Menú desplegable -->
       <mat-menu #userMenu="matMenu">
-        <button mat-menu-item routerLink="/perfil">Perfil</button>
-        <button mat-menu-item routerLink="/configuracion">Configuración</button>
         <button mat-menu-item (click)="logout()">Logout</button>
       </mat-menu>
     </li>

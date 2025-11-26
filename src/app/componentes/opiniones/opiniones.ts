@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { interfazOpinion } from '../../interfaces/opinion';
 import { GestionarOpiniones } from '../../services/gestionar-opiniones';
-import { Card } from '../card/card';
+
 import { Filtro } from '../filtro/filtro';
 import { GestionarPeliculas } from '../../services/gestionar-peliculas';
 import { interfazPeliculas } from '../../interfaces/interfazPeliculas';
+import { OrdenPeliculas } from '../orden-peliculas/orden-peliculas';
 
 @Component({
     selector: 'app-opiniones',
-    imports: [Card, Filtro ],
+    imports: [ Filtro,OrdenPeliculas ],
     templateUrl: './opiniones.html',
     styleUrls: ['./opiniones.css'],
 })
 export class Opiniones implements OnInit {
     listaOpiniones: interfazOpinion[] = [];
     opinionesFiltradas: interfazOpinion[] = [];
-    listaPeliculas: import("/home/alumnotd/opinion-peliculas/src/app/interfaces/interfazPeliculas").interfazPeliculas[] | undefined;
+    listaPeliculas: import("../../interfaces/interfazPeliculas").interfazPeliculas[] | undefined;
     
     constructor(
         private GestionarOpiniones: GestionarOpiniones,

@@ -1,7 +1,5 @@
+<!-- Componente de filtro: emite el texto -->
 <app-filtro (filtrar)="aplicarFiltro($event)"></app-filtro>
 
-<div class="opiniones-grid">
-  @for (opinion of opinionesFiltradas; track opinion._id) {
-    <app-card [opinion]="opinion"></app-card>
-  }
-</div>
+<!-- Componente de ordenación: recibe la lista filtrada -->
+<app-orden-peliculas [opiniones]="opinionesFiltradas"></app-orden-peliculas>
