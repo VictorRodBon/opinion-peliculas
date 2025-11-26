@@ -1,3 +1,14 @@
+/* Contenedor del menú */
+.main-menu {
+  background: #f9f9f9;
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 0px;
+  height: 60px;
+}
+
+/* Lista horizontal */
 .main-menu ul {
   list-style: none;
   display: flex;
@@ -7,19 +18,33 @@
   margin: 0;
 }
 
+/* Elementos */
 .main-menu li {
   display: flex;
 }
 
+/* Botones */
 .main-menu button {
   font-weight: 600;
   text-transform: uppercase;
   border-radius: 6px;
-  padding: 6px 14px;
+  padding: 8px 16px;
+  border: none;
+  background-color: transparent;
+  color: #1976d2;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
+/* Hover */
+.main-menu button:hover {
+  background-color: #e3f2fd;
+  transform: scale(1.05);
+}
+
+/* Activo */
 .main-menu button.active {
   background-color: #1976d2;
   color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }

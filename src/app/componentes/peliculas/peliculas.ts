@@ -12,6 +12,7 @@ import { interfazPeliculas } from '../../interfaces/interfazPeliculas';
 import { GestionarPeliculas } from '../../services/gestionar-peliculas';
 import { MatTableDataSource } from '@angular/material/table'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Filtro } from '../filtro/filtro';
 
 @Component({
   selector: 'app-peliculas',
@@ -24,6 +25,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatSortModule,
     MatPaginatorModule,
     DatePipe,
+    Filtro,
   ],
 })
 export class Peliculas implements AfterViewInit {
@@ -64,6 +66,14 @@ export class Peliculas implements AfterViewInit {
         this.dataSource.data = datos;
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+
+        // 🔎 Personalizar filtro: título + director
+        this.dataSource.filterPredicate = (data: interfazPeliculas, filter: string) => {
+          return (
+            data.title.toLowerCase().includes(filter) ||
+            data.director.toLowerCase().includes(filter)
+          );
+        };
       });
   }
 
@@ -80,4 +90,10 @@ export class Peliculas implements AfterViewInit {
       }
     });
   }
+
+  aplicarFiltro(valor: string) {
+    this.dataSource.filter = valor.trim().toLowerCase();
+  }
+
+
 }

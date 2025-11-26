@@ -1,5 +1,4 @@
 <h2>Crear Película</h2>
-
 <form [formGroup]="peliculaForm" (ngSubmit)="crear()">
     <mat-form-field appearance="outline" class="full-width">
         <mat-label>Título</mat-label>
@@ -8,37 +7,37 @@
 
     <mat-form-field appearance="outline" class="full-width">
         <mat-label>Fecha de estreno</mat-label>
-        <input matInput formControlName="premiere" placeholder="YYYY-MM-DD">
+        <input matInput formControlName="premiere" type="date" placeholder="YYYY-MM-DD" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
         <mat-label>Director</mat-label>
-        <input matInput formControlName="director">
+        <input matInput formControlName="director" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
         <mat-label>Descripción corta</mat-label>
-        <textarea matInput formControlName="short_description"></textarea>
+        <textarea matInput formControlName="short_description" required></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
         <mat-label>Descripción larga</mat-label>
-        <textarea matInput formControlName="long_description"></textarea>
+        <textarea matInput formControlName="long_description" required></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
         <mat-label>URL de imagen</mat-label>
-        <input matInput formControlName="image">
+        <input matInput formControlName="image" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
         <mat-label>Duración (minutos)</mat-label>
-        <input matInput type="number" formControlName="duration">
+        <input matInput type="number" formControlName="duration" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Actores principales (separados por comas)</mat-label>
-        <input matInput formControlName="main_actors">
+        <mat-label>Actores principales (separados por dos puntos (":"))</mat-label>
+        <input matInput formControlName="main_actors" required>
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit" [disabled]="peliculaForm.invalid">

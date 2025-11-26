@@ -2,16 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { interfazOpinion } from '../../interfaces/opinion';
 import { GestionarOpiniones } from '../../services/gestionar-opiniones';
 import { Card } from '../card/card';
+import { Filtro } from '../filtro/filtro';
+import { GestionarPeliculas } from '../../services/gestionar-peliculas';
+import { interfazPeliculas } from '../../interfaces/interfazPeliculas';
 
 @Component({
     selector: 'app-opiniones',
-    imports: [Card ],
+    imports: [Card, Filtro ],
     templateUrl: './opiniones.html',
     styleUrls: ['./opiniones.css'],
 })
 export class Opiniones implements OnInit {
     listaOpiniones: interfazOpinion[] = [];
-    constructor(private GestionarOpiniones: GestionarOpiniones) { }
+    opinionesFiltradas: interfazOpinion[] = [];
+    listaPeliculas: import("/home/alumnotd/opinion-peliculas/src/app/interfaces/interfazPeliculas").interfazPeliculas[] | undefined;
+    
+    constructor(
+        private GestionarOpiniones: GestionarOpiniones,
+        private GestionarPeliculas: GestionarPeliculas
+    ){}
+    
     getOpiniones(): void {
         this.GestionarOpiniones.getOpiniones().subscribe((datos) => {
             this.listaOpiniones = datos.map(op => {
@@ -26,6 +36,7 @@ export class Opiniones implements OnInit {
                     })
                 };
             });
+            this.opinionesFiltradas = [...this.listaOpiniones]
         });
     }
 
@@ -33,6 +44,28 @@ export class Opiniones implements OnInit {
     ngOnInit(): void {
         this.getOpiniones();
     }
+
+    getPeliculas(): void {
+        this.GestionarPeliculas.getPeliculas().subscribe((peliculas) => {
+        this.listaPeliculas = peliculas;
+        });
+    }
+
+    // 🔎 obtener película asociada a una opinión
+    getPelicula(opinion: interfazOpinion): interfazPeliculas {
+    return opinion.pelicula;
+    }
+
+    
+    aplicarFiltro(valor: string) {
+        const filtro = valor.toLowerCase();
+        this.opinionesFiltradas = this.listaOpiniones.filter(op =>
+            op.descripcion?.toLowerCase().includes(filtro) ||
+            op.pelicula?.title.toLowerCase().includes(filtro) ||   // 👈 aquí el cambio
+            op.usuario?.nombre?.toLowerCase().includes(filtro)     // 👈 si quieres filtrar por usuario
+        );
+    }
+
     // duardar una opinion
     guardarOpinion():void{
         

@@ -1,5 +1,7 @@
+<app-filtro (filtrar)="aplicarFiltro($event)"></app-filtro>
+
 <div class="opiniones-grid">
-    @for (opinion of listaOpiniones; track opinion._id) {
-        <app-card [opinion]="opinion"></app-card>
-    }
+  @for (opinion of opinionesFiltradas; track opinion._id) {
+    <app-card [opinion]="opinion"></app-card>
+  }
 </div>

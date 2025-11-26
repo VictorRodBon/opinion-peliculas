@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>{{titulo}}</h1>
+    <div class="contenido">
+        <div class="argumento">
+            <h2>Argumento principal:</h2>
+            <div>
+                <p>{{descripcionLarga}}</p>
+                <img src="{{imagen}}" alt="imagen">
+            </div>
+        </div>
+        <div class="actores">
+            <h2>Actores principales:</h2>
+            <ul>
+                @for(actor of actores; track actor){
+                    <li>{{actor}}</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

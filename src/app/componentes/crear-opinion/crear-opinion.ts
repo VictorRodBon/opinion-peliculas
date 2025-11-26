@@ -1,7 +1,8 @@
+import { GestionarOpiniones } from './../../services/gestionar-opiniones';
+import { GestionarPeliculas } from './../../services/gestionar-peliculas';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GestionarOpiniones } from '../../services/gestionar-opiniones';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,7 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class CrearOpinion {
   private fb = inject(FormBuilder);
-  private opinionesService = inject(GestionarOpiniones);
+  private GestionarOpiniones = inject(GestionarOpiniones);
+  private GestionarPeliculas = inject(GestionarPeliculas);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
@@ -28,6 +30,20 @@ export class CrearOpinion {
     descripcion: ['', Validators.required],
     puntuacion: [null, [Validators.required, Validators.min(0), Validators.max(10)]]
   });
+
+  peliculaNombre: string = '';
+
+  ngOnInit(): void {
+    const peliculaId = this.route.snapshot.paramMap.get('peliculaId');
+    if (peliculaId) {
+      this.GestionarPeliculas.getPelicula(peliculaId).subscribe({
+        next: pelicula => {
+          this.peliculaNombre = pelicula.title; // aquí guardas el título
+        },
+        error: err => console.error('Error al cargar película', err)
+      });
+    }
+  }
 
   crear() {
     const formValue = this.opinionForm.value;
@@ -40,7 +56,7 @@ export class CrearOpinion {
       pelicula
     };
 
-    this.opinionesService.crearOpinion(opinion).subscribe({
+    this.GestionarOpiniones.crearOpinion(opinion).subscribe({
       next: () => this.router.navigate(['/opiniones']),
       error: err => console.error('Error al crear opinión', err)
     });
