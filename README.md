@@ -70,7 +70,13 @@ node app.js
 [ ] Añadir opinion pelicula -> si es posible, utilizar Events and readonly ratings 
 
 
-
-
 ## COSAS QUE CAMBIAR
 - Modificar ficheros para poder utilizar tocken
+
+
+## AÑADIR 2ª PARTE
+    - Añadir otro servidor
+    - Añadir perfiles de usuario
+    - Animación en parte usuario
+    - Gráficos para dashboard administrador
+    - Utilizar LocalStorage
