@@ -46,32 +46,28 @@ node app.js
 [X] Dashboard peliculas
 [X] Dashboard opiniones
 
-[ ] Login
-[ ] Registro
+[X] Login
+[X] Registro
 
 [X] Conexión con base de datos MongoDB y Express
 
-[ ] Crear nueva película
+[X] Crear nueva película
 [ ] Modificar Pelicula
 
-[ ] Añadir opinion pelicula
+[X] Añadir opinion pelicula
 
 ---
 ### Diseño
-[ ] Dashboard peliculas
+[X] Dashboard peliculas
 [X] Dashboard opiniones
 
 [X] Login
-[ ] Registro
+[X] Registro
 
 [X] Crear nueva película
 [ ] Modificar Pelicula
 
 [ ] Añadir opinion pelicula -> si es posible, utilizar Events and readonly ratings 
-
-
-## COSAS QUE CAMBIAR
-- Modificar ficheros para poder utilizar tocken
 
 
 ## AÑADIR 2ª PARTE
@@ -80,3 +76,7 @@ node app.js
     - Animación en parte usuario
     - Gráficos para dashboard administrador
     - Utilizar LocalStorage
+    - Modificar Backend para que al eliminar una película se borren las opiniones
+    - Modificar Backend para que al eliminar un usuario las opiniones no se borren pero que en la perte del usuario salga: '[usuariono encontrado]'
+    ---
+    - Agregar integración con api de google para el login
