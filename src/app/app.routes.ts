@@ -1,3 +1,4 @@
+import { perfilGuard } from './guard-perfil';
 import { GraficoLineas } from './componentes/grafico-lineas/grafico-lineas';
 import { Routes } from '@angular/router';
 import { Login } from './componentes/login/login';
@@ -15,10 +16,10 @@ export const routes: Routes = [
   { path: 'registro', component: Registro },
   { path: 'peliculas', component: Peliculas },
   { path: 'opiniones', component: Opiniones, canActivate: [authGuard]  },
-  { path: 'estadisticas', component: GraficoLineas, canActivate: [authGuard]  },
+  { path: 'estadisticas', component: GraficoLineas, canActivate: [authGuard,perfilGuard('ADMIN')]  },
   { path: 'detallePeliculas/:peliculaId', component: DetallePelicula, canActivate: [authGuard]  },
   { path: 'editarPelicula/:peliculaId', component: EditarPeliculas, canActivate: [authGuard] },
   { path: 'crearPelicula', component: CrearPelicula, canActivate: [authGuard] },
   { path: 'crearOpinion/:peliculaId', component: CrearOpinion, canActivate: [authGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/peliculas', pathMatch: 'full' },
 ];

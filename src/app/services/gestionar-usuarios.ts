@@ -10,26 +10,22 @@ import { interfazUsuarios } from '../interfaces/users'
 export class GestionarUsuario {
   private http = inject(HttpClient);
 
-  private apiURL =  'http://localhost:3000/usuarios';
+  private apiURL = 'http://localhost:3000/usuarios';
 
   private _token = signal<string | null>(localStorage.getItem('token'));
   token = this._token.asReadonly();
 
   // Computed para saber si está autenticado
-  
-  
   estaAutenticado = computed(() => this._token() !== null);
-
-
 
   registro(codigo: string, nombre: string, email: string, clave: string) {
     return this.http.post<Boolean>(
       this.apiURL + "/registro",
-      { codigo,clave,nombre,email}
+      { codigo, clave, nombre, email }
     ).pipe(
       catchError(err => {
         console.error("Error en registro:", err);
-        return of(false); // Devuelves un valor seguro si quieres
+        return of(false);
       })
     );
   }
@@ -47,18 +43,16 @@ export class GestionarUsuario {
       { email, clave }
     ).pipe(
       tap(response => {
-        // Guardar el token en localStorage
+        // Guardar token y usuario
         localStorage.setItem('token', response.token);
         localStorage.setItem('usuarioId', response.usuario._id);
 
-
-        // Actualizar la señal del usuario (puedes guardar el email o id)
         this._token.set(response.token);
       }),
-        catchError(err => {
-          console.error("Error en login:", err);
-          return throwError(() => err); // O devuelves un observable controlado
-        })
+      catchError(err => {
+        console.error("Error en login:", err);
+        return throwError(() => err);
+      })
     );
   }
 
@@ -67,7 +61,7 @@ export class GestionarUsuario {
       .pipe(
         tap(() => {
           localStorage.removeItem('token');
-          this._token.set(null); // ✅ actualiza el signal
+          this._token.set(null);
         })
       );
   }
@@ -75,5 +69,21 @@ export class GestionarUsuario {
   private getAuthHeaders() {
     const token = this._token();
     return { headers: { Authorization: `Bearer ${token}` } };
+  }
+
+  // 🔥 NUEVO MÉTODO: obtener el perfil desde el token JWT
+  obtenerPerfil(): string | null {
+    const token = this._token();
+    if (!token) return null;
+
+    try {
+      const payloadBase64 = token.split('.')[1];
+      const payloadDecoded = JSON.parse(atob(payloadBase64));
+
+      return payloadDecoded.perfil || null; // Ajusta el nombre según tu backend
+    } catch (error) {
+      console.error("Error al decodificar token:", error);
+      return null;
+    }
   }
 }
