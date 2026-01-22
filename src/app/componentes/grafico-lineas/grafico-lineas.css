@@ -1,0 +1,16 @@
+canvas {
+    margin: 0 auto;
+    display: block;
+}
+
+#chart-container {
+    width: 60%;
+    max-width: 600px;
+    margin: auto;
+}
+
+#chart-container canvas {
+    width: 100% !important;
+    height: 300px !important;
+}
+

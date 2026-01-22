@@ -7,7 +7,7 @@ import { Card } from '../card/card';
 @Component({
   selector: 'app-orden-peliculas',
   standalone: true,
-  imports: [ NgFor, FormsModule, Card],
+  imports: [ FormsModule, Card],
   templateUrl: './orden-peliculas.html',
   styleUrls: ['./orden-peliculas.css'],
 })
