@@ -11,9 +11,10 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrl: './menu.css',
 })
 export class Menu {
-private router = inject(Router); 
-private auth = inject(GestionarUsuario);
-  estaAutenticado= this.auth.estaAutenticado;
+  private router = inject(Router); 
+  private auth = inject(GestionarUsuario);
+  esAdmin= this.auth.perfil;
+  estaAutenticado= this.auth.token; 
 
   logout() {
     this.auth.logout().subscribe({

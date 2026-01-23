@@ -13,7 +13,7 @@ export const perfilGuard = (perfilRequerido: string): CanActivateFn => () => {
   }
 
   // Validar perfil
-  const perfilUsuario = auth.obtenerPerfil(); // Ajusta el nombre si tu método es distinto
+  const perfilUsuario = auth.obtenerPerfil(); 
 
   if (perfilUsuario === perfilRequerido) {
     return true;

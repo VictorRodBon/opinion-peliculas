@@ -12,11 +12,12 @@ export class GestionarUsuario {
 
   private apiURL = 'http://localhost:3000/usuarios';
 
-  private _token = signal<string | null>(localStorage.getItem('token'));
+  private _token = signal<string >("");
   token = this._token.asReadonly();
 
-  // Computed para saber si está autenticado
-  estaAutenticado = computed(() => this._token() !== null);
+  private _perfil = signal<string>("usuario");
+  perfil = this._perfil.asReadonly();
+
 
   registro(codigo: string, nombre: string, email: string, clave: string) {
     return this.http.post<Boolean>(
@@ -48,6 +49,7 @@ export class GestionarUsuario {
         localStorage.setItem('usuarioId', response.usuario._id);
 
         this._token.set(response.token);
+        this._perfil.set(this.obtenerPerfil());
       }),
       catchError(err => {
         console.error("Error en login:", err);
@@ -61,7 +63,7 @@ export class GestionarUsuario {
       .pipe(
         tap(() => {
           localStorage.removeItem('token');
-          this._token.set(null);
+          this._token.set("");
         })
       );
   }
@@ -72,18 +74,21 @@ export class GestionarUsuario {
   }
 
   // 🔥 NUEVO MÉTODO: obtener el perfil desde el token JWT
-  obtenerPerfil(): string | null {
+  obtenerPerfil(): string {
     const token = this._token();
-    if (!token) return null;
+    if (!token) return "usuario";
 
     try {
       const payloadBase64 = token.split('.')[1];
       const payloadDecoded = JSON.parse(atob(payloadBase64));
 
-      return payloadDecoded.perfil || null; // Ajusta el nombre según tu backend
+      return payloadDecoded.perfil || "usuario"; // Ajusta el nombre según tu backend
     } catch (error) {
       console.error("Error al decodificar token:", error);
-      return null;
+      return "usuario";
     }
+  }
+  estaAutenticado(): boolean {
+    return this._token() !== "";
   }
 }

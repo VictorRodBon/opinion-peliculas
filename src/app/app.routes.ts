@@ -21,5 +21,5 @@ export const routes: Routes = [
   { path: 'editarPelicula/:peliculaId', component: EditarPeliculas, canActivate: [authGuard] },
   { path: 'crearPelicula', component: CrearPelicula, canActivate: [authGuard] },
   { path: 'crearOpinion/:peliculaId', component: CrearOpinion, canActivate: [authGuard] },
-  { path: '', redirectTo: '/peliculas', pathMatch: 'full' },
+  { path: '', redirectTo: 'peliculas', pathMatch: 'full' },
 ];
