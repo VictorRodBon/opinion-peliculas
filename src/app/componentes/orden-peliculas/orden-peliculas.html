@@ -8,7 +8,7 @@
 
 <!-- Mostrar las opiniones ya ordenadas -->
 <div class="opiniones-grid">
-    @for (opinion of opinionesOrdenadas; track opinion._id) {
+    @for (opinion of opinionesMostradas; track opinion._id) {
         <app-card class="opinion-card" [opinion]="opinion"></app-card>
     }
 </div>

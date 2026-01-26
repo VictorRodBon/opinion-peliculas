@@ -11,10 +11,17 @@ import { Card } from '../card/card';
   templateUrl: './orden-peliculas.html',
   styleUrls: ['./orden-peliculas.css'],
 })
+
 export class OrdenPeliculas {
   @Input() opiniones: interfazOpinion[] = [];
 
   criterio: 'fecha' | 'puntuacion' = 'fecha';
+
+  opinionesMostradas: interfazOpinion[] = [];
+
+  ngOnChanges() {
+    this.mostrarConRetraso();
+  }
 
   get opinionesOrdenadas(): interfazOpinion[] {
     return [...this.opiniones].sort((a, b) => {
@@ -28,4 +35,14 @@ export class OrdenPeliculas {
       }
     });
   }
+
+  async mostrarConRetraso() {
+    this.opinionesMostradas = []; // limpiar antes de mostrar
+
+    for (const opinion of this.opinionesOrdenadas) {
+      this.opinionesMostradas.push(opinion);
+      await new Promise(resolve => setTimeout(resolve, 300)); // 300ms entre tarjetas
+    }
+  }
 }
+
