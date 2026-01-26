@@ -18,6 +18,14 @@ export class GestionarUsuario {
   private _perfil = signal<string>("usuario");
   perfil = this._perfil.asReadonly();
 
+  constructor() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this._token.set(token);
+      this._perfil.set(this.obtenerPerfil());
+    }
+  }
+
 
   registro(codigo: string, nombre: string, email: string, clave: string) {
     return this.http.post<Boolean>(
@@ -64,6 +72,7 @@ export class GestionarUsuario {
         tap(() => {
           localStorage.removeItem('token');
           this._token.set("");
+          this._perfil.set("usuario");
         })
       );
   }

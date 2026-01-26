@@ -1,9 +1,10 @@
 <div class="sorter">
     <label for="criterio">Ordenar por:</label>
-    <select [(ngModel)]="criterio" id="criterio">
+    <select [(ngModel)]="criterio" (ngModelChange)="mostrarConRetraso()" id="criterio">
         <option value="fecha">Fecha</option>
         <option value="puntuacion">Puntuación</option>
     </select>
+
 </div>
 
 <!-- Mostrar las opiniones ya ordenadas -->

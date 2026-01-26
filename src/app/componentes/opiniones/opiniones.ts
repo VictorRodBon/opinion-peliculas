@@ -29,12 +29,7 @@ export class Opiniones implements OnInit {
                 const fecha = op.fechaRegistro ? new Date(op.fechaRegistro) : new Date();
                 return {
                     ...op,
-                    fechaRegistro: fecha.toLocaleDateString('es-ES', {
-                        weekday: 'long',
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric'
-                    })
+                    
                 };
             });
             this.opinionesFiltradas = [...this.listaOpiniones]

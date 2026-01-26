@@ -28,4 +28,22 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class Card {
   @Input() opinion!: interfazOpinion;
 
+  fecha: string = '';
+
+  ngOnChanges() {
+    if (!this.opinion) return;
+
+    const fecha =
+      this.opinion.fechaRegistro instanceof Date
+        ? this.opinion.fechaRegistro
+        : new Date(this.opinion.fechaRegistro);
+
+    this.fecha = fecha.toLocaleDateString('es-ES', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  }
 }
+

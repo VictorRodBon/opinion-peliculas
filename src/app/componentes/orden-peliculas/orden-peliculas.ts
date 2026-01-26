@@ -10,11 +10,14 @@ import { Card } from '../card/card';
   imports: [ FormsModule, Card],
   templateUrl: './orden-peliculas.html',
   styleUrls: ['./orden-peliculas.css'],
+  
 })
 
 export class OrdenPeliculas {
   @Input() opiniones: interfazOpinion[] = [];
 
+  fecha:Date=new Date();
+  
   criterio: 'fecha' | 'puntuacion' = 'fecha';
 
   opinionesMostradas: interfazOpinion[] = [];
@@ -40,8 +43,9 @@ export class OrdenPeliculas {
     this.opinionesMostradas = []; // limpiar antes de mostrar
 
     for (const opinion of this.opinionesOrdenadas) {
+      //console.log(opinion);
       this.opinionesMostradas.push(opinion);
-      await new Promise(resolve => setTimeout(resolve, 300)); // 300ms entre tarjetas
+      await new Promise(resolve => setTimeout(resolve, 500)); // 300ms entre tarjetas
     }
   }
 }
