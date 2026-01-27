@@ -18,13 +18,22 @@ export class GestionarUsuario {
   private _perfil = signal<string>("usuario");
   perfil = this._perfil.asReadonly();
 
+  private _foto = signal<string>("");
+  foto = this._foto.asReadonly();
+
+  private _id = signal<string>("");
+  id = this._id.asReadonly();
+
   constructor() {
     const token = localStorage.getItem('token');
     if (token) {
       this._token.set(token);
       this._perfil.set(this.obtenerPerfil());
+      this._foto.set(this.obtenerFoto());
+      this._id.set(this.obtenerId());
     }
   }
+  
 
 
   registro(codigo: string, nombre: string, email: string, clave: string) {
@@ -58,6 +67,9 @@ export class GestionarUsuario {
 
         this._token.set(response.token);
         this._perfil.set(this.obtenerPerfil());
+        this._foto.set(this.obtenerFoto());
+        this._id.set(this.obtenerId());
+        
       }),
       catchError(err => {
         console.error("Error en login:", err);
@@ -97,7 +109,41 @@ export class GestionarUsuario {
       return "usuario";
     }
   }
+  
+  obtenerFoto(): string {
+    const token = this._token();
+    if (!token) return "default.png";
+  
+    try {
+      const payloadBase64 = token.split('.')[1];
+      const payloadDecoded = JSON.parse(atob(payloadBase64));
+      return payloadDecoded.foto || "default.png";
+    } catch {
+      return "default.png";
+    }
+  }
+
+  obtenerId(): string{
+    const token = this._token();
+    if (!token) return "usuario";
+
+    try {
+      const payloadBase64 = token.split('.')[1];
+      const payloadDecoded = JSON.parse(atob(payloadBase64));
+
+      return payloadDecoded.id;
+    } catch (error) {
+      console.error("Error al decodificar token:", error);
+      return "usuario";
+    }
+  }
+
   estaAutenticado(): boolean {
     return this._token() !== "";
   }
+
+  subirFoto(id: string, formData: FormData) {
+    return this.http.put(`http://localhost:3000/usuarios/foto/${id}`, formData);
+  }
+  
 }

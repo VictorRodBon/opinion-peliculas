@@ -46,42 +46,44 @@ node app.js
 [X] Dashboard peliculas
 [X] Dashboard opiniones
 
+[X] Dashboard administrador
+
 [X] Login
 [X] Registro
+[ ] Modificar Usuario
 
 [X] Conexión con base de datos MongoDB y Express
 
 [X] Crear nueva película
 [ ] Modificar Pelicula
 
+
 [X] Añadir opinion pelicula
 
+[X] Comunicación entre componentes
+
+[X] Gestión de perfiles
+
+[] Cookies -> almacenar operaciones realizadas
 ---
 ### Diseño
 [X] Dashboard peliculas
 [X] Dashboard opiniones
 
+[X] Dashboard administrador
+
 [X] Login
 [X] Registro
+[ ] Modificar Usuario
 
 [X] Crear nueva película
 [ ] Modificar Pelicula
 
-[ ] Añadir opinion pelicula -> si es posible, utilizar Events and readonly ratings 
+[X] Añadir opinion pelicula -> si es posible, utilizar Events and readonly ratings 
 
+[X] Animaciones
 
-## AÑADIR 2ª PARTE
-    - Añadir otro servidor
-    - Añadir perfiles de usuario
-    - Animación en parte usuario
-    - Gráficos para dashboard administrador
-    - Utilizar LocalStorage
-    - Modificar Backend para que al eliminar una película se borren las opiniones
-    - Modificar Backend para que al eliminar un usuario las opiniones no se borren pero que en la perte del usuario salga: '[usuariono encontrado]'
-    ---
-    - Agregar integración con api de google para el login
-
-
+[X] Gestión de perfiles
 
 
 PARTE SEGUNDA (FINAL DE CURSO)
@@ -95,7 +97,7 @@ PARTE SEGUNDA (FINAL DE CURSO)
     Si al menos se ha realizado toda la parte obligatoria la nota será de un 5
     La parte servidora deberá cumplir las siguientes características:
         [X]Sera una API
-        []Debe permitir el CRUD de usuarios y de los dos tipos de objetos utilizando una base de datos -> falta modificar
+        [-]Debe permitir el CRUD de usuarios y de los dos tipos de objetos utilizando una base de datos -> falta modificar
         [X]Debe utilizar un ORM/ODM
         [X]Debe validar y sanitizar los campos de entrada
         [X]Debe permitir la gestión de sesión con token o con cookie o con cookie/token

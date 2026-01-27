@@ -1,0 +1,17 @@
+<h2>Modificar Imagen de perfil</h2>
+
+<!-- Selector de archivo -->
+<input type="file" accept="image/*" (change)="onFileSelected($event)" />
+
+<!-- Previsualización -->
+@if (preview) {
+  <div class="preview-container">
+    <h4>Previsualización:</h4>
+    <img [src]="preview" class="preview-img" />
+  </div>
+}
+
+<!-- Botón para subir -->
+<button (click)="subirFoto()" [disabled]="!selectedFile">
+  Guardar foto
+</button>
