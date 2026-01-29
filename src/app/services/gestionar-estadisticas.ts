@@ -10,7 +10,7 @@ export class GestionarEstadisticas {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private apiURL = 'http://localhost:3000/opiniones/estadisticas/';
+  private apiURL = '/opiniones/estadisticas/';
   constructor(private http: HttpClient) { }
 
   getEstadisticas(desde: Date, hasta: Date) {

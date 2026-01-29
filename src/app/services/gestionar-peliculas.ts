@@ -10,7 +10,7 @@ export class GestionarPeliculas {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private apiURL = 'http://localhost:3000/peliculas';
+  private apiURL = '/peliculas';
 
   constructor(private http: HttpClient){}
 

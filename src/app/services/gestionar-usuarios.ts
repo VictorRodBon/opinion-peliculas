@@ -10,7 +10,7 @@ import { interfazUsuarios } from '../interfaces/users'
 export class GestionarUsuario {
   private http = inject(HttpClient);
 
-  private apiURL = 'http://localhost:3000/usuarios';
+  private apiURL = '/usuarios';
 
   private _token = signal<string >("");
   token = this._token.asReadonly();

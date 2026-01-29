@@ -13,7 +13,7 @@ export class GestionarOpiniones {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private apiURL = 'http://localhost:3000/opiniones/';
+  private apiURL = '/opiniones/';
 
   constructor(private http: HttpClient) { }
 
