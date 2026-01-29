@@ -1,6 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { GestionarUsuario } from '../../services/gestionar-usuarios';
 
+import { Router } from '@angular/router';
+
+import { Operaciones } from '../../services/operaciones';
+
 @Component({
   selector: 'app-modificar-imagen',
   imports: [],
@@ -15,6 +19,10 @@ export class ModificarImagen {
 
   usuarioId = this.auth.id(); // ← luego lo sustituyes por el real
 
+  private operacionesService = inject(Operaciones);
+
+  private router = inject(Router);
+  
   constructor(private usuarioService: GestionarUsuario) {}
 
   onFileSelected(event: any) {
@@ -43,7 +51,10 @@ export class ModificarImagen {
 
     this.usuarioService.subirFoto(this.usuarioId, formData).subscribe({
       next: (res) => {
-        console.log('Foto actualizada', res);
+        this.operacionesService.logOperation("Modificar foto de usuario: " + this.usuarioId);
+        alert('Foto actualizada. Cierra sesión y vuelve a iniciar para ver los cambios.');
+
+        this.router.navigate(['/peliculas'])
       },
       error: (err) => {
         console.error('Error al subir foto', err);

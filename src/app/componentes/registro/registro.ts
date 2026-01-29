@@ -38,7 +38,7 @@ export class Registro {
           .subscribe({
         next: () => {
           alert('Registro completado con éxito');
-          this.router.navigateByUrl('/registro');
+          this.router.navigateByUrl('/login');
         },
         error: (err) => {
           console.error('Login fallido', err);
