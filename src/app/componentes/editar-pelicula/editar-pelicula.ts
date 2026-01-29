@@ -35,7 +35,8 @@ export class EditarPeliculas implements OnInit {
   });
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('peliculaId');
+    console.log(id);
     if (id) {
       this.peliculasService.getPelicula(id).subscribe(pelicula => {
         this.peliculaForm.patchValue({

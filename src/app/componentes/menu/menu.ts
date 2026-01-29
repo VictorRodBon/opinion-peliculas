@@ -14,12 +14,13 @@ export class Menu {
   private router = inject(Router); 
   private auth = inject(GestionarUsuario);
   esAdmin= this.auth.perfil;
-  foto = this.auth.foto();
+  foto = this.auth.foto;
   estaAutenticado= this.auth.token; 
 
-  ngOnInit(){
-    this.foto=this.auth.foto();
+  onImageError(event: any) {
+    event.target.src = 'http://localhost:3000/uploads/default.png';
   }
+
 
   logout() {
     this.auth.logout().subscribe({

@@ -32,11 +32,16 @@
       <li><button mat-button routerLink="/estadisticas" routerLinkActive="active">Dashboard</button></li>
     }
   </ul>
-  @if(estaAutenticado()){
-    <div class="avatar">      
-      <img [src]="'http://localhost:3000/uploads/' + foto" alt="Imagen" />
-    </div>
-  }
+  @if (estaAutenticado()) {
+  <div class="avatar">
+    <img 
+      [src]="'http://localhost:3000/uploads/' + foto()"
+      (error)="onImageError($event)"
+      alt="Imagen"
+    />
+  </div>
+}
+
   
 
 </nav>
