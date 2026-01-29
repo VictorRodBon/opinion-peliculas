@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
+import { Operaciones } from '../../services/operaciones';
+
 @Component({
   selector: 'app-crear-pelicula',
   standalone: true,
@@ -22,6 +24,8 @@ export class CrearPelicula {
   private fb = inject(FormBuilder);
   private peliculasService = inject(GestionarPeliculas);
   private router = inject(Router);
+
+  private operacionesService = inject(Operaciones);
 
   peliculaForm = this.fb.group({
     title: ['', Validators.required],
@@ -42,6 +46,8 @@ export class CrearPelicula {
       ...formValue,
       main_actors: formValue.main_actors?.split(':').map(a => a.trim())
     };
+
+    this.operacionesService.logOperation("Crear de película: " + pelicula.title);
 
     this.peliculasService.crearPelicula(pelicula).subscribe({
       next: () => this.router.navigate(['/peliculas']),

@@ -7,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
+import { Operaciones } from '../../services/operaciones';
+
 @Component({
   selector: 'app-crear-opinion',
   standalone: true,
@@ -25,6 +27,8 @@ export class CrearOpinion {
   private GestionarPeliculas = inject(GestionarPeliculas);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+
+  private operacionesService = inject(Operaciones);
 
   opinionForm = this.fb.group({
     descripcion: ['', Validators.required],
@@ -55,6 +59,8 @@ export class CrearOpinion {
       usuario,
       pelicula
     };
+
+    this.operacionesService.logOperation("Crear opinion: " + opinion.pelicula);
 
     this.GestionarOpiniones.crearOpinion(opinion).subscribe({
       next: () => this.router.navigate(['/opiniones']),

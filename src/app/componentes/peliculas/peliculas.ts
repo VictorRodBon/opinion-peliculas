@@ -14,6 +14,8 @@ import { MatTableDataSource } from '@angular/material/table'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Filtro } from '../filtro/filtro';
 
+import { GestionarUsuario } from '../../services/gestionar-usuarios';
+
 @Component({
   selector: 'app-peliculas',
   templateUrl: './peliculas.html',
@@ -30,13 +32,10 @@ import { Filtro } from '../filtro/filtro';
 })
 export class Peliculas implements AfterViewInit {
   
-  private _token = signal<string | null>(localStorage.getItem('token'));
-  token = this._token.asReadonly();
-  // Computed para saber si está autenticado
-  
-  estaAutenticado = computed(() => this._token() !== null);
-  
-
+  private auth = inject(GestionarUsuario);
+  esAdmin= this.auth.perfil;
+  foto = this.auth.foto;
+  estaAutenticado= this.auth.token; 
 
   private gestionarPeliculas = inject(GestionarPeliculas);
   private snackBar = inject(MatSnackBar);

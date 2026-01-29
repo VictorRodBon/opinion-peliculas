@@ -38,16 +38,12 @@
                 <button mat-raised-button color="primary" [routerLink]="['/crearOpinion', pelicula._id]">
                     Añadir Opinión
                 </button>
-                <button mat-raised-button color="primary" [routerLink]="['/editarPelicula', pelicula._id]">
-                    Editar Película
-                </button>
-                @if (estaAutenticado()) {
+                @if (esAdmin()=="ADMIN") {
+                    <button mat-raised-button color="primary" [routerLink]="['/editarPelicula', pelicula._id]">
+                        Editar Película
+                    </button>
                     <button mat-raised-button color="warn" (click)="eliminarPelicula(pelicula._id)">
                         Eliminar Película
-                    </button>
-                }@else{
-                    <button mat-raised-button color="warn" [routerLink]="['/editarPelicula', pelicula._id]">
-                        Borrar Película
                     </button>
                 }
             </td>

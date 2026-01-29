@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { Operaciones } from '../../services/operaciones';
+
 @Component({
   selector: 'app-editar-pelicula',
   standalone: true,
@@ -26,6 +28,8 @@ export class EditarPeliculas implements OnInit {
   private router = inject(Router);
   private peliculasService = inject(GestionarPeliculas);
   private snackBar = inject(MatSnackBar);
+
+  private operacionesService = inject(Operaciones);
 
   peliculaForm = this.fb.group({
     title: ['', Validators.required],
@@ -61,6 +65,8 @@ export class EditarPeliculas implements OnInit {
         duration: Number(raw.duration),
         premiere: raw.premiere ? new Date(raw.premiere).toISOString() : null // ← ISO string
       };
+
+      this.operacionesService.logOperation("Actualización de película: " + pelicula.title);
 
       this.peliculasService.actualizarPelicula(id, pelicula).subscribe({
         next: () => {
