@@ -16,6 +16,9 @@ import { Filtro } from '../filtro/filtro';
 
 import { GestionarUsuario } from '../../services/gestionar-usuarios';
 
+
+import { Operaciones } from '../../services/operaciones';
+
 @Component({
   selector: 'app-peliculas',
   templateUrl: './peliculas.html',
@@ -36,6 +39,8 @@ export class Peliculas implements AfterViewInit {
   esAdmin= this.auth.perfil;
   foto = this.auth.foto;
   estaAutenticado= this.auth.token; 
+
+  private operacionesService = inject(Operaciones);
 
   private gestionarPeliculas = inject(GestionarPeliculas);
   private snackBar = inject(MatSnackBar);
@@ -91,6 +96,8 @@ export class Peliculas implements AfterViewInit {
         this.snackBar.open('Película eliminada correctamente', 'Cerrar', { duration: 3000 });
         // Opcional: recargar la lista
         this.dataSource.data = this.dataSource.data.filter(p => p._id !== id);
+
+        this.operacionesService.logOperation("Eliminar pelicula: " + id);
       },
       error: err => {
         console.error('Error al eliminar película:', err);

@@ -13,19 +13,21 @@ import { Router } from '@angular/router';
 export class Login {
   private auth = inject(GestionarUsuario);
   private router = inject(Router);
-  error: string="";
+  error: boolean=false;
+  mensajeError:string="";
   clave = '';
   email = '';
 
   onSubmit() {
     this.auth.login(this.email, this.clave).subscribe({
       next: () => {
-        this.error = "";
+        this.error = false;
         this.router.navigateByUrl('/peliculas');
       },
       error: (err) => {
+        this.error=true
         console.error('Login fallido', err);
-        this.error = 'Usuario o contraseña incorrectos';
+        this.mensajeError = 'Usuario o contraseña incorrectos';
       }
     });
   }

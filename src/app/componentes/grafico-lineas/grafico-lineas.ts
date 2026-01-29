@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartData, ChartOptions } from 'chart.js';
@@ -13,6 +13,8 @@ import { EstadisticaOpiniones } from '../../interfaces/interfazEstadisticas';
   styleUrl: './grafico-lineas.css',
 })
 export class GraficoLineas implements OnInit {
+
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
   chartData: ChartData<'line'> = {
     labels: [],
@@ -43,11 +45,21 @@ export class GraficoLineas implements OnInit {
     this.gestionarEstadisticas.getEstadisticas(desde, hasta)
       .subscribe((data: EstadisticaOpiniones[]) => {
         console.log(data);
-        this.chartData.labels = data.map(item =>
-          new Date(item._id).toLocaleDateString()
-        );
 
-        this.chartData.datasets[0].data = data.map(item => item.total);
+        this.chartData = {
+          labels: data.map(item => new Date(item._id).toLocaleDateString()),
+          datasets: [
+            {
+              label: 'Opiniones por día',
+              data: data.map(item => item.total),
+              borderColor: 'blue',
+              backgroundColor: 'rgba(0,0,255,0.3)',
+              fill: true
+            }
+          ]
+        };
+
+        this.chart?.update();
       });
   }
 }

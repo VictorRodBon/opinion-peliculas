@@ -4,7 +4,7 @@
     <form (ngSubmit)="onSubmit()">
         <!-- Usuario -->
         <div class="form-group">
-            <label>Codigo de usuario</label>
+            <label>Correo de usuario</label>
             <input type="text" [(ngModel)]="email" name="email" />
         </div>
 
@@ -13,6 +13,12 @@
             <label>Contraseña</label>
             <input type="password" [(ngModel)]="clave" name="clave" />
         </div>
+
+        @if(error){
+        <div class="error-message">
+            <p>Correo o contraseña incorrectos</p>
+        </div>
+        }
 
         <button type="submit">Acceder</button>
     </form>
