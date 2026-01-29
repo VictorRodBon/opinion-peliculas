@@ -12,11 +12,15 @@ import { CrearOpinion } from './componentes/crear-opinion/crear-opinion';
 import { EditarPeliculas } from './componentes/editar-pelicula/editar-pelicula';
 import { DetallePelicula } from './componentes/detalle-pelicula/detalle-pelicula';
 
+import { ListarAcciones } from './componentes/listar-acciones/listar-acciones';
+
+
 export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'registro', component: Registro },
   { path: 'modificar', component: ModificarImagen },
   { path: 'peliculas', component: Peliculas },
+  { path: 'acciones', component: ListarAcciones },
   { path: 'opiniones', component: Opiniones, canActivate: [authGuard]  },
   //{ path: 'opiniones', component: Opiniones },
   { path: 'estadisticas', component: GraficoLineas, canActivate: [authGuard,perfilGuard('ADMIN')]  },

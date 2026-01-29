@@ -1,0 +1,5 @@
+@for(op of operaciones;track $index){
+    <li>
+        {{op.action}} - {{op.timestamp | date:'yyyy-MM-dd/HH:mm:ss'}}
+    </li>
+}

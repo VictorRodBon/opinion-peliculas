@@ -35,4 +35,10 @@ export class Operaciones {
     const current = this.getCookie(this.operaciones); 
     return current ? JSON.parse(current) : []; 
   }
+
+  borrarCookie(){
+    document.cookie = `${this.operaciones}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+
+  }
+
 }

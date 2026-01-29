@@ -47,7 +47,7 @@ export class CrearPelicula {
       main_actors: formValue.main_actors?.split(':').map(a => a.trim())
     };
 
-    this.operacionesService.logOperation("Crear de película: " + pelicula.title);
+    this.operacionesService.logOperation("Crear película: " + pelicula.title);
 
     this.peliculasService.crearPelicula(pelicula).subscribe({
       next: () => this.router.navigate(['/peliculas']),
